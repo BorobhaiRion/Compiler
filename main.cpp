@@ -1,52 +1,39 @@
 #include <iostream>
+#include <fstream>
 #include "functions.h"
 using namespace std;
 
 int main()
 {
-    int choice;
+    ifstream inputFile("input.txt");
 
-    while (true)
+    if (!inputFile.is_open())
     {
-        cout << "\n=== MENU ===\n";
-        cout << "1. Check if Number\n";
-        cout << "2. Find Operators\n";
-        cout << "3. Detect Comment\n";
-        cout << "4. Validate Identifier\n";
-        cout << "5. Find Average\n";
-        cout << "6. Find Max & Min\n";
-        cout << "7. Concatenate Names\n";
-        cout << "8. Exit\n";
-        cout << "Enter your choice: ";
-        cin >> choice;
-
-        switch (choice)
-        {
-        case 1:
-            cout << (isNum() ? "It's a number." : "Not a number.") << endl;
-            break;
-        case 2:
-            isOperator();
-            break;
-        case 3:
-            comment();
-            break;
-        case 4:
-            identifier();
-            break;
-        case 5:
-            avg();
-            break;
-        case 6:
-            maxMin();
-            break;
-        case 7:
-            namesConcat();
-            break;
-        case 8:
-            return 0;
-        default:
-            cout << "Invalid choice!\n";
-        }
+        cerr << "Error opening input.txt" << endl;  // used cerr for error output
+        return 1; // this ends main() immidiately as return 0 says pprogramme runned successfully
     }
+
+    cout << "\n--- Checking for Number ---\n";
+    cout << (isNum(inputFile) ? "It's a number." : "Not a number.") << endl;
+
+    cout << "\n--- Finding Operators ---\n";
+    isOperator(inputFile);
+
+    cout << "\n--- Detecting Comment ---\n";
+    comment(inputFile);
+
+    cout << "\n--- Validating Identifier ---\n";
+    identifier(inputFile);
+
+    cout << "\n--- Finding Average ---\n";
+    avg(inputFile);
+
+    cout << "\n--- Finding Max & Min ---\n";
+    maxMin(inputFile);
+
+    cout << "\n--- Concatenating Names ---\n";
+    namesConcat(inputFile);
+
+    inputFile.close();
+    return 0;
 }

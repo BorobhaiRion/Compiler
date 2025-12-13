@@ -1,17 +1,22 @@
 #include <iostream>
+#include <fstream>
 #include "functions.h"
 using namespace std;
 
-void maxMin()
+void maxMin(std::ifstream &inputFile)
 {
     int n;
-    cout << "Enter array size: ";
-    cin >> n;
+    inputFile >> n;
+    cout << "Input array size: " << n << endl;
 
     int arr[n];
-    cout << "Enter array elements: ";
+    cout << "Input array elements: ";
     for (int i = 0; i < n; i++)
-        cin >> arr[i];
+    {
+        inputFile >> arr[i];
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 
     int minVal = arr[0];
     int maxVal = arr[0];

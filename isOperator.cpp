@@ -1,13 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream>
 #include "functions.h"
 using namespace std;
 
-void isOperator() {
+void isOperator(ifstream &inputFile) {
     string c;
-    cout << "Enter a string: ";
-    cin >> c;
+    inputFile >> c;
+    cout << "Input: " << c << endl;
 
     vector<char> ops;
     for (int i = 0; i < c.length(); i++) {

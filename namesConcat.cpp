@@ -1,17 +1,15 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "functions.h"
 using namespace std;
 
-void namesConcat()
+void namesConcat(std::ifstream &inputFile)
 {
     string firstName, lastName;
 
-    cout << "Enter your first name: ";
-    cin >> firstName;
-
-    cout << "Enter your last name: ";
-    cin >> lastName;
+    inputFile >> firstName >> lastName;
+    cout << "Input names: " << firstName << " " << lastName << endl;
 
     string fullName = firstName + " " + lastName;
     cout << "Full name: " << fullName << endl;

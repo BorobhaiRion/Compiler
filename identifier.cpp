@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "functions.h"
 using namespace std;
 
-void identifier()
+void identifier(ifstream &inputFile)
 {
     string s;
-    cout << "Enter a string: ";
-    cin >> s;
+    inputFile >> s;
+    cout << "Input: " << s << endl;
 
     if (s.empty())
     {
