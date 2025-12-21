@@ -9,9 +9,11 @@ int main()
 
     if (!inputFile.is_open())
     {
-        cerr << "Error opening input.txt" << endl;  // used cerr for error output
-        return 1; // this ends main() immidiately as return 0 says pprogramme runned successfully
+        cerr << "Error opening input.txt" << endl;  
+        return 1; 
     }
+
+    
 
     cout << "\n--- Checking for Number ---\n";
     cout << (isNum(inputFile) ? "It's a number." : "Not a number.") << endl;

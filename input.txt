@@ -1,6 +1,7 @@
-
+12345
 a+b-c=d*e/f%g
-//this is a single line comment
+/*this is a single line comment
+not*/
 my_variable
 5
 1 2 3 4 5
