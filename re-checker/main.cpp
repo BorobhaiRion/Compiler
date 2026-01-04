@@ -4,16 +4,52 @@
 
 using namespace std;
 
-bool re1 (string s){
-    for (int i = 0 ; i < s.size() ; i++){
-        if(s[i] != 'a'){
+bool re1(string s)
+{
+    int n = s.size();
+    if (n == 0) return false;
+
+    int i = 0;
+
+    // starts with b
+    if (s[0] == 'b')
+    {
+        for (i = 0; i < n && s[i] == 'b'; i++);
+
+        if (i == n || s[i] != 'a') return false;
+        i++;
+    }
+    // starts with a
+    else if (s[0] == 'a')
+    {
+        i = 1;
+    }
+    else
+    {
+        return false;
+    }
+
+    // now if the rest is baa ||bab||a
+    for (; i < n;)
+    {
+        if (s[i] == 'a')
+        {
+            i++;
+        }
+        else if (i + 2 < n && s.substr(i, 3) == "baa")
+        {
+            i += 3;
+        }
+        else if (i + 2 < n && s.substr(i, 3) == "bab")
+        {
+            i += 3;
+        }
+        else
+        {
             return false;
-            break;
         }
     }
-    if (s == "" ){
-        return true;
-    }
+
     return true;
 }
 
@@ -33,10 +69,10 @@ int main()
     getline(inputFile, firstLine);
 
     if(re1(firstLine)){
-        cout<<"Accepted R.E = a*";
+        cout<<"Accepted. R.E = b*a[a+ba{a+b)]* accepts:: "+firstLine;
     }
     else{
-        cout<<"Rejected R.E = a*";
+        cout<<"Rejected. R.E = b*a[a+ba{a+b)]* rejects:: "+firstLine;
     }
 
     inputFile.close();
